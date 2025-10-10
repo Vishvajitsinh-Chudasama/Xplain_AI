@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XplainAI - OTP Verification</title>
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+      
+        :root {
+            --primary-blue: #7b76dc; 
+            --primary-text: #1f2937; 
+            --light-bg: #f7f7f7;    
+            --card-bg: #ffffff;     
+            --secondary-text: #6b7280; 
+        }
+
+        body {
+            background-color: var(--light-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .email-container {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 480px;
+            border-radius: 10px;
+           
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
+            overflow: hidden;
+            text-align: center;
+        }
+
+       
+        .email-logo {
+            background-color: var(--primary-blue);
+            padding: 20px;
+            color: white;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        
+        .email-message {
+            padding: 30px;
+            color: var(--primary-text);
+        }
+
+        .email-confirm {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        .email-message p {
+            margin: 10px 0;
+            line-height: 1.6;
+            color: var(--primary-text);
+        }
+
+      
+        .email-otp {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-blue);
+           
+            background-color: #e6f2ff; 
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 8px;
+            letter-spacing: 5px;
+            max-width: 250px;
+        }
+        
+       
+        .email-end {
+            margin-top: 25px;
+            font-size: 14px;
+            color: var(--secondary-text);
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        
+        .help-container {
+            background-color: var(--light-bg);
+            padding: 20px;
+            font-size: 14px;
+            color: var(--secondary-text);
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .help-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-text);
+        }
+
+      
+        @media (max-width: 600px) {
+            .email-container {
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .email-otp {
+                font-size: 26px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="email-container">
+        <div class="email-logo">XplainAI</div>
+        
+        <div class="email-message">
+            <div class="email-confirm">Secure Transaction Verification</div> 
+            
+            <p>Dear {{ username }}, a payment or action related to your AI Model Deployment requires confirmation.</p>
+            <p>To finalize this request, please enter the One-Time Password (OTP) below:</p>
+            
+            <div class="email-otp">{{ otp }}</div>
+            
+            <p>This OTP is valid for [5 minutes].Do not share it with anyone, including our support team, as it grants access to your account.</p>
+
+            <div class="email-end">
+                <p>Trust is our priority. Thank you for using XplainAI.</p>
+                <p>Best regards,</p>
+                <p><strong>The XplainAI </strong></p>
+            </div>
+        </div>
+
+        
+    </div>
+
+</body>
+</html>
