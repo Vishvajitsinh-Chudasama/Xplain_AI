@@ -1,0 +1,224 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup -XplainAI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body, html {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #007bffb1, #7caee7);
+  }
+
+  .left {
+    flex: 1;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    background: rgba(0,0,0,0.2);
+  }
+
+  .left h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .left h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .left p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .features {
+    margin-top: 16px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .feature-item::before {
+    content: "✔";
+    color: #00ffea;
+    margin-right: 8px;
+    font-weight: bold;
+  }
+
+  .right {
+     background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80');
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+
+  .signup-container {
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 380px;
+    padding: 24px;
+  }
+
+  .logo { display: flex; justify-content: center; margin-bottom: 12px; }
+  .logo img { width: 40px; }
+
+  h2 { text-align: center; color: #222; margin-bottom: 16px; font-size: 20px; }
+
+  .input-group { margin-bottom: 12px; }
+  .input-group label { display: block; font-weight: 500; color: #666; margin-bottom: 4px; font-size: 14px; }
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+  }
+  .input-group input:focus { border-color: #007bff; outline: none; box-shadow: 0 0 4px rgba(0,123,255,0.5); }
+
+  .checkbox-group { display: flex; align-items: center; margin-bottom: 12px; font-size: 14px; }
+  .checkbox-group input { margin-right: 6px; }
+
+  .send-otp-btn, .signup-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 8px;
+  }
+  .send-otp-btn:hover, .signup-btn:hover { background-color: #0056b3; }
+
+  .signup-link { text-align: center; margin-top: 6px; font-size: 13px; }
+  .signup-link a { color: #007bff; text-decoration: none; }
+  .signup-link a:hover { text-decoration: underline; }
+
+  .otp-message { color: green; font-size: 13px; margin-bottom: 8px; display: none; }
+
+  @media(max-width: 900px){
+    .container { flex-direction: column; }
+    .left, .right { flex: unset; width: 100%; padding: 30px; }
+    .left { text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Left Side -->
+ <div class="left">
+  <h1>Explainable AI Model</h1>
+  <h3>PS-10 | AI | AU Placement Cell</h3>
+  
+  <p><strong>Statement:</strong> AI models act as black boxes, limiting trust and adoption.</p>
+  
+  <p><strong>Expected Solution:</strong> Build a small ML model with an explainability module that shows why decisions are made, visualizing features used.</p>
+  
+  <div class="features">
+    <div class="feature-item">Diabetes Prediction Model</div>
+    <div class="feature-item">Cancer Prediction Model</div>
+    <div class="feature-item">House Price Prediction Model</div>
+    <div class="feature-item">Loan Approval Prediction Model</div>
+  </div>
+</div>
+
+  <!-- Right Side -->
+  <div class="right">
+    <div class="signup-container">
+      <div class="logo">
+        <img src="{% static 'img/Gemini_Generated_Image_xlnn9txlnn9txlnn.png' %}" alt="XplainAI">
+      </div>
+      <h2>Create Your Account</h2>
+      <form id="signupForm">
+        <div class="input-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required placeholder="Enter full name">
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="Enter email">
+        </div>
+        <div class="input-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" required placeholder="Enter phone">
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Enter password">
+        </div>
+        <div class="input-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm password">
+        </div>
+        <div class="input-group">
+          <label for="otp">OTP</label>
+          <input type="text" id="otp" name="otp" placeholder="Enter OTP">
+          <div class="otp-message" id="otpMessage">OTP sent! Check your phone/email.</div>
+        </div>
+        
+        <button type="button" class="send-otp-btn" id="sendOtpBtn">Send OTP</button>
+        
+      </form>
+      <div class="signup-link">
+        <p>Already have an account? <a href="#">Log in</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let generatedOTP = "";
+  document.getElementById('sendOtpBtn').addEventListener('click', function() {
+    generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+    document.getElementById('otpMessage').style.display = "block";
+    alert("Your OTP is: " + generatedOTP);
+  });
+
+  document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    const enteredOtp = document.getElementById('otp').value;
+    if(password !== confirmPassword){
+      alert("Passwords do not match!");
+      return;
+    }
+    if(enteredOtp !== generatedOTP){
+      alert("Incorrect OTP!");
+      return;
+    }
+    alert("Signup successful!");
+    this.reset();
+    document.getElementById('otpMessage').style.display = "none";
+  });
+</script>
+</body>
+</html>
