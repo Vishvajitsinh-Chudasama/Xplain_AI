@@ -1,0 +1,220 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XplainAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-light': '#FFFFFF',
+                        'secondary-light': '#F3F4F6',
+                        'text-dark': '#1F2937', 
+                        'accent-blue': '#00BFFF',
+                        'accent-teal': '#208cb0ff', 
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="relative text-text-dark font-sans">
+
+    <div class="absolute inset-0 -z-10 overflow-hidden">
+        <svg width="100%" height="100%" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute top-0 left-0 w-full h-full">
+            <defs>
+                <linearGradient id="bg1" x1="0" y1="0" x2="1440" y2="900" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#00BFFF" stop-opacity="0.12"/>
+                    <stop offset="0.5" stop-color="#00A896" stop-opacity="0.10"/>
+                    <stop offset="1" stop-color="#F3F4F6" stop-opacity="0.18"/>
+                </linearGradient>
+            </defs>
+            <ellipse cx="1200" cy="200" rx="400" ry="180" fill="url(#bg1)" />
+            <ellipse cx="300" cy="700" rx="350" ry="120" fill="url(#bg1)" />
+            <ellipse cx="900" cy="800" rx="250" ry="100" fill="url(#bg1)" />
+        </svg>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-light via-secondary-light/80 to-accent-blue/10"></div>
+    </div>
+
+    <header class="sticky top-0 z-50 bg-primary-light/95 backdrop-blur-sm shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold tracking-widest text-text-dark hover:text-accent-blue transition duration-300 flex items-center space-x-2">
+    <!-- <img src="{% static 'img/logo.png' %}" alt="XplainAI Logo" class="h-8 w-auto"> -->
+    <span class="text-accent-blue">X</span><span class="text-text-dark">plainAI</span>
+</a>
+            <div class="flex items-center space-x-4">
+                <a href="#features" class="text-text-dark hover:text-accent-blue transition duration-300 hidden md:block">Models</a>
+                <!-- <a href="#" class="text-text-dark hover:text-accent-blue transition duration-300 hidden md:block">Contact</a> -->
+                <a href="auth/login" id="login-btn" class="px-4 py-2 text-sm font-semibold text-text-dark border border-gray-300 rounded-lg hover:bg-secondary-light transition duration-300 shadow-sm">
+                    Login
+                </a>
+                <a href="auth/signup" id="signup-btn" class="px-5 py-2 text-sm font-semibold text-white rounded-lg bg-accent-blue hover:bg-accent-teal transition duration-300 shadow-lg">
+                    Sign Up
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="relative z-10">
+        <section class="relative pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden bg-secondary-light/80">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight text-text-dark mb-6">
+                    Deploy Cutting-Edge <span class="bg-clip-text text-transparent bg-gradient-to-r from-accent-blue to-accent-teal">Deep Learning</span> Models
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-10 max-w-4xl mx-auto">
+                    From Computer Vision to NLP, access a unified platform for training, optimizing, and scaling your AI solutions instantly.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="inline-block px-8 py-3 text-lg font-semibold rounded-lg text-white bg-accent-blue hover:bg-accent-teal transition duration-300 shadow-xl shadow-accent-blue/30 transform hover:scale-105">
+                        Explore Models
+                    </a>
+                    <a href="#" class="inline-block px-8 py-3 text-lg font-semibold rounded-lg text-text-dark border border-gray-400 hover:bg-gray-200 transition duration-300 transform hover:scale-105">
+                        Request Demo
+                    </a>
+                </div>
+            </div>
+        </section>
+        <br>
+        <center>
+        <h1 class="text-4xl font-bold text-center text-text-dark mb-2">SHAP</h1>
+        <p>SHAP is a method used to explain individual predictions made by any machine learning model.<br> It connects optimal credit allocation with local explanations using Shapley values, <br>a concept from cooperative game theory.</p><br>
+        <p>Core idea : Every feature value in a model's prediction is treated as a "player" in a game. <br>The prediction itself is the "payout." SHAP values fairly distribute the total difference<br> between the actual prediction (output) and the average prediction (baseline) among the features.</p><br>
+        <br><br>
+        <h2 class="text-4xl font-bold text-center text-text-dark mb-2">SHAP Additive Feature Attribution Formula</h2>
+        <p>The SHAP explanation model is an additive feature attribution method, meaning the explanation <br>is a linear function of binary variables that represent whether a feature is present.</p>
+        <p>The general form of the additive feature attribution model is:</p>
+        <img src="{% static 'img/a.png' %}" alt="">
+        <p>Where:<br>
+        • g is the explanation model (a simplified linear model).<br><br>
+        • z' ∈{0,1}^M is the simplified input (a vector of M features,<br>  where z'i=1 means the i-th feature is present, and z'i=0 means it is hidden).<br><br>
+        • ϕ 0is the base value (the expected output of the model, <br>typically the average prediction across the entire dataset).<br><br>
+        • ϕ i is the Shapley value (the feature contribution) for the i-th feature.<br><br>
+        This formula simply states that the explained prediction (g(z ′))<br> is the sum of the base value and the individual contributions <br>S(ϕ i ) of all present features (z i′=1).
+        </p><br><br>
+        <h3 class="text-4xl font-bold text-center text-text-dark mb-2">The Shapley Value (ϕ i) Calculation</h3>
+        <p>The core mathematical definition for calculating the specific contribution (ϕ i) of feature i is:</p>
+        <img src="{% static 'img/b.png' %}" alt="">
+        <p>• N is the set of all features.<br>
+        • S is a subset of features excluding the feature i we are calculating for.<br>
+        • ∣N∣ is the total number of features.<br>
+        • ∣S∣ is the number of features in the subset S.<br>
+        • fx(S∪{i}) is the model's prediction when the features in S and feature i are present.</p><br><br>
+         <h4 class="text-4xl font-bold text-center text-text-dark mb-2">Why Use SHAP for Your XplainAI Models?</h4>
+        <table class="min-w-full divide-y divide-gray-300 rounded-xl overflow-hidden shadow-2xl border border-gray-200 bg-gradient-to-br from-primary-light via-secondary-light/80 to-accent-blue/5">
+    
+    <thead class="bg-accent-blue/20 border-b-2 border-accent-blue/30">
+        <tr>
+            <th scope="col" class="w-1/4 px-8 py-5 text-left text-base font-extrabold text-text-dark uppercase tracking-widest">
+                Rationale
+            </th>
+            <th scope="col" class="w-3/4 px-8 py-5 text-left text-base font-extrabold text-text-dark uppercase tracking-widest">
+                Explanation
+            </th>
+        </tr>
+    </thead>
+    
+    <tbody class="divide-y divide-gray-100">
+        
+        <tr class="hover:bg-accent-blue/10 transition duration-200">
+            <td class="px-8 py-5 whitespace-normal font-semibold text-accent-teal text-lg">
+                Model Agnostic
+            </td>
+            <td class="px-8 py-5 text-gray-700 text-base">
+                SHAP can be applied to any of your four models (e.g., Random Forest, Logistic Regression, Neural Network) without needing to change the explanation method.
+            </td>
+        </tr>
+
+        <tr class="hover:bg-accent-blue/10 transition duration-200">
+            <td class="px-8 py-5 whitespace-normal font-semibold text-accent-teal text-lg">
+                Local Accuracy
+            </td>
+            <td class="px-8 py-5 text-gray-700 text-base">
+                The sum of the Shapley values plus the base value equals the model's actual prediction. This ensures the explanation is mathematically sound and true to the model's output.
+            </td>
+        </tr>
+
+        <tr class="hover:bg-accent-blue/10 transition duration-200">
+            <td class="px-8 py-5 whitespace-normal font-semibold text-accent-teal text-lg">
+                Fairness (Game Theory)
+            </td>
+            <td class="px-8 py-5 text-gray-700 text-base">
+                SHAP values are the only method based on solid game theory principles (Shapley values) that guarantee a fair distribution of the prediction outcome among all contributing features.
+            </td>
+        </tr>
+
+        <tr class="hover:bg-accent-blue/10 transition duration-200">
+            <td class="px-8 py-5 whitespace-normal font-semibold text-accent-teal text-lg">
+                Global & Local Insight
+            </td>
+            <td class="px-8 py-5 text-gray-700 text-base">
+                SHAP can be used for both: Local Explanation (why one specific person was approved for a loan) and Global Explanation (which features, like Credit Score, are most important across all loan applications).
+            </td>
+        </tr>
+
+        <tr class="hover:bg-accent-blue/10 transition duration-200">
+            <td class="px-8 py-5 whitespace-normal font-semibold text-accent-teal text-lg">
+                Addressing the Statement
+            </td>
+            <td class="px-8 py-5 text-gray-700 text-base">
+                By using SHAP, you directly address the "black box" statement. The output for each model's prediction will be a list of features with their corresponding SHAP values, clearly visualizing why the decision was made.
+            </td>
+        </tr>
+    </tbody>
+</table><br><br>
+        <h1 class="text-4xl font-bold text-center text-text-dark mb-2">Explainability VS Performance Graph</h1><br>
+        <br><br>
+       <div class="relative w-full max-w-2xl mx-auto my-8">
+    <img src="{% static 'img/graph.png' %}" alt="Explainability VS Performance Graph" class="w-full h-auto rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 transform hover:scale-102">
+</div>
+
+<style>
+    
+    .shadow-3xl {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 5px rgba(0, 191, 255, 0.1);
+    }
+</style>
+        </center><br><br>
+        <center>
+        <section id="features" class="py-20 bg-primary-light/80">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center text-text-dark mb-16">The Future of AI Deployment</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            
+            <div class="p-8 bg-secondary-light rounded-xl shadow-lg border-t-4 border-accent-blue transform hover:scale-[1.02] transition duration-300">
+                <div class="text-4xl text-accent-blue mb-4 text-center">🩺</div>
+                <h3 class="text-xl font-semibold text-text-dark mb-3 text-center">Diabetes Prediction Model</h3>
+                <p class="text-gray-600">An AI/ML model that analyzes medical data (e.g., genetic markers, blood sugar levels, imaging scans) to predict the risk or likelihood of a patient developing diabetes.</p>
+            </div>
+            
+            <div class="p-8 bg-secondary-light rounded-xl shadow-lg border-t-4 border-accent-blue transform hover:scale-[1.02] transition duration-300">
+                <div class="text-4xl text-accent-blue mb-4 text-center">👩🏻‍⚕</div>
+                <h4 class="text-xl font-semibold text-text-dark mb-3 text-center">Cancer Prediction Model</h4>
+                <p class="text-gray-600">An AI/ML model that analyzes medical data (e.g., genetic markers, biopsy results, imaging scans) to predict the risk or likelihood of a patient developing a specific type of cancer.</p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+        </center>
+    </main>
+
+    <footer class="bg-secondary-light border-t border-gray-200 py-8 relative z-10">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 XplainAI Platform. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
